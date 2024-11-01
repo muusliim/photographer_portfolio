@@ -12,6 +12,11 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        pprightGrotesk: ["var(--pprightGrotesk)"],
+        ptSansNarrow: ["var(--pt-sans-narrow)"],
+        merriweather: ["var(--merriweather)"],
+      },
     },
   },
   plugins: [],
