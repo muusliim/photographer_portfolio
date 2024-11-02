@@ -1,11 +1,15 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-export default function MagneticLink({ children }: { children: React.ReactNode }) {
+export default function MagneticLink({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
 	const ref = useRef<HTMLDivElement>(null);
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 
-	const handleMouse = (e: any) => {
+	const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
 		const { clientX, clientY } = e;
 
 		if (!ref.current) return;
