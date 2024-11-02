@@ -67,7 +67,7 @@ const Column = ({
 }: {
 	images: string[];
 	y: MotionValue<number>;
-	classNameColumn?: any;
+	classNameColumn?: string;
 }) => {
 	return (
 		<motion.div

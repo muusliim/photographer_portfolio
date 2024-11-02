@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { forwardRef, useMemo, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import MagneticLink from "./MagneticLink";
@@ -12,31 +12,12 @@ export default function Contacts() {
 		seconds: number | string;
 	}
 
-	const ref = useRef<HTMLDivElement>(null);
-	const [position, setPosition] = useState({ x: 0, y: 0 });
-
-	const mouseMove = (e: any) => {
-		const { clientX, clientY } = e;
-
-		if (!ref.current) return;
-		const { width, height, top, left } = ref.current.getBoundingClientRect();
-
-		const x = clientX - (left + width / 2);
-		const y = clientY - (top + height / 2);
-		setPosition({ x, y });
-	};
-	const mouseLeave = (e: any) => {
-		setPosition({ x: 0, y: 0 });
-	};
-
-	const { x, y } = position;
-
 	const [time, setTime] = useState<Time>({
 		hours: 0,
 		minutes: 0,
 		seconds: 0,
 	});
-	useMemo(() => {
+	useEffect(() => {
 		const interval = setInterval(() => {
 			setTime({
 				hours:
@@ -54,7 +35,7 @@ export default function Contacts() {
 			});
 		}, 1000);
 		return () => clearInterval(interval);
-	}, [time]);
+	}, [setTime]);
 
 	return (
 		<section className="h-[101vh] bg-background" id="contacts">
@@ -129,8 +110,22 @@ export default function Contacts() {
 								{`${time.hours}:${time.minutes}:${time.seconds}`}
 							</div>
 						</div>
-						<a  href="#home" className="text-3xl">
-							ВВЕРХ ↑
+						<a href="#home" className="text-3xl">
+							ВВЕРХ{" "}
+							<motion.span
+								className="inline-block"
+								animate={{
+									y: -5,
+									transition: {
+										duration: 0.6,
+										repeat: Infinity,
+										repeatType: "reverse",
+										delay: 3
+									},
+								}}
+							>
+								↑
+							</motion.span>
 						</a>
 					</div>
 				</div>
