@@ -1,24 +1,37 @@
 "use client";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useTransform, useScroll, motion, MotionValue } from "framer-motion";
 import useDimension from "@/hooks/useDimension";
+import Lenis from "lenis";
 
 const images = [
-	"/parallaxScrollPics/parallaxScroll1.jpg",
-	"/parallaxScrollPics/parallaxScroll2.jpg",
-	"/parallaxScrollPics/parallaxScroll3.jpg",
-	"/parallaxScrollPics/parallaxScroll4.jpg",
-	"/parallaxScrollPics/parallaxScroll5.jpg",
-	"/parallaxScrollPics/parallaxScroll6.jpg",
-	"/parallaxScrollPics/parallaxScroll7.jpg",
-	"/parallaxScrollPics/parallaxScroll8.jpg",
-	"/parallaxScrollPics/parallaxScroll9.jpg",
-	"/parallaxScrollPics/parallaxScroll10.jpg",
-	"/parallaxScrollPics/parallaxScroll11.jpg",
-	"/parallaxScrollPics/parallaxScroll12.jpg",
+	"/parallaxScrollPics/parallaxScroll1.webp",
+	"/parallaxScrollPics/parallaxScroll3.webp",
+	"/parallaxScrollPics/parallaxScroll2.webp",
+	"/parallaxScrollPics/parallaxScroll4.webp",
+	"/parallaxScrollPics/parallaxScroll5.webp",
+	"/parallaxScrollPics/parallaxScroll6.webp",
+	"/parallaxScrollPics/parallaxScroll7.webp",
+	"/parallaxScrollPics/parallaxScroll8.webp",
+	"/parallaxScrollPics/parallaxScroll9.webp",
+	"/parallaxScrollPics/parallaxScroll10.webp",
+	"/parallaxScrollPics/parallaxScroll11.webp",
+	"/parallaxScrollPics/parallaxScroll12.webp",
 ];
 export default function ParallaxScrollGallery() {
+	useEffect(() => {
+		const lenis = new Lenis();
+
+		const raf = (time: number) => {
+			lenis.raf(time);
+
+			requestAnimationFrame(raf);
+		};
+
+		requestAnimationFrame(raf);
+	}, []);
+
 	const gallery = useRef(null);
 	const { height } = useDimension();
 	const { scrollYProgress } = useScroll({
