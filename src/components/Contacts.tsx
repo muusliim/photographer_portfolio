@@ -41,7 +41,7 @@ export default function Contacts() {
     <section className="h-[101vh] bg-background" id="contacts">
       <div className="pt-10">
         <h2 className="text-center font-pprightGrotesk text-7xl">КОНТАКТЫ</h2>
-        <div className="flex h-[70vh] max-sm:h-[60vh] flex-col items-center justify-center max-sm:px-5">
+        <div className="flex h-[70vh] flex-col items-center justify-center max-sm:h-[60vh] max-sm:px-5">
           <div className="mx-auto grid h-full w-full max-w-[900px] grid-cols-2 place-items-center gap-8">
             <div className="relative h-[90%] w-full">
               <Image
@@ -53,10 +53,14 @@ export default function Contacts() {
             </div>
             <div className="flex h-full flex-col items-baseline justify-around">
               <MagneticLink>
-                <Link href="https://www.instagram.com/dzhambulatd">
+                <Link
+                  href="https://www.instagram.com/dzhambulatd"
+                  title="*Facebook/Instagram — проект Meta Platforms Inc., деятельность которой в России запрещена"
+                >
                   <Image
                     src={"/icons/insta.svg"}
                     alt="inst"
+                    style={{rotate: '270deg'}}
                     width={80}
                     height={80}
                   />
@@ -114,7 +118,7 @@ export default function Contacts() {
             </div>
             <a
               href="#home"
-              className="text-3xl max-sm:mt-8 max-sm:text-center max-sm:text-2 xl"
+              className="max-sm:text-2 xl text-3xl max-sm:mt-8 max-sm:text-center"
             >
               ВВЕРХ{" "}
               <motion.span
