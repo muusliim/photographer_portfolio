@@ -8,37 +8,35 @@ import Lenis from "lenis";
 import { useEffect } from "react";
 
 export default function Home() {
-	useEffect(() => {
-		const lenis = new Lenis();
+  useEffect(() => {
+    const lenis = new Lenis();
 
-		document.querySelectorAll('a[href^="#"]').forEach((el) => {
-			el.addEventListener("click", (e) => {
-				e.preventDefault();
-				const id = el.getAttribute("href")?.slice(1);
-				if (!id) return;
-				const target = document.getElementById(id);
-				if (target) {
-					target.scrollIntoView({ behavior: "smooth" });
-				}
-			});
-		});
+    document.querySelectorAll('a[href^="#"]').forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = el.getAttribute("href")?.slice(1);
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-		function raf(time: number) {
-			lenis.raf(time);
+    requestAnimationFrame(raf);
+  }, []);
 
-			requestAnimationFrame(raf);
-		}
-
-		requestAnimationFrame(raf);
-	}, []);
-
-	return (
-		<main>
-			<Loader />
-			<Hero />
-			<ParallaxGallery />
-			<ParallaxScrollGallery />
-			<Contacts />
-		</main>
-	);
+  return (
+    <main>
+      <Loader />
+      <Hero />
+      <ParallaxGallery />
+      <ParallaxScrollGallery />
+      <Contacts />
+    </main>
+  );
 }
