@@ -61,7 +61,7 @@ export default function ParallaxScrollGallery() {
           images[10],
           images[11],
         ]}
-        y={y3}
+        y={y2}
         classNameColumn="top-[-85%] md:hidden"
         classNameDiv="md:hidden"
       />

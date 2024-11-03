@@ -74,7 +74,7 @@ export default function Contacts() {
                 </Link>
               </MagneticLink>
               <MagneticLink>
-                <Link href="www.google.com">
+                <Link href="https://wa.me/+79284777713">
                   {" "}
                   <Image
                     src={"/icons/whatsapp.svg"}
